@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     homeButtonText:{
         color:'#D9D9D9',
     },
-    //frutas
+    //frutas =============================================
     frutasTela:{
         flex: 1,
         flexDirection: 'row',
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     pesquisarFrutas:{
-        backgroundColor: 'red',
+        backgroundColor: 'rgba(218, 13, 30, 1)',
         width: 100,
         height: 100,
         top: 10
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     frutaButtonAdd:{
         position: 'absolute',
-        backgroundColor: 'red',
+        backgroundColor: 'rgba(218, 13, 30, 1)',
         bottom: 50,
         right: 30,
         width: 60,
@@ -75,6 +75,109 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 20
+    },
+    //tela de cadastro de frutas ================================
+    CadastrarFrutasTela:{
+        flex: 1,
+        flexDirection:'column',
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'top',
+        backgroundColor: 'white'
+    },
+    cadastrarFrutaConteiner: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 10,
+        paddingRight: 10,
+        width: '100%',
+        marginTop: 20
+    },
+    CadastrarFrutasTitle: {
+        flex: 1,
+        color: 'rgba(218, 13, 30, 1)',
+        fontSize: 24,
+        textAlign: 'left',
+        fontFamily: 'Poppins_500Medium',
+        marginLeft: 10
+    },
+    cadastrarFrutaButtonX:{
+        backgroundColor: 'transparent',
+        marginRight: 10
+    },
+    cadastrarFrutaButton:{
+        position: 'absolute',
+        backgroundColor: 'rgba(218, 13, 30, 1)',
+        bottom: 50,
+        width: '90%',
+        height: 56, 
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 100
+    },
+    cadastrarFrutaButtonText:{
+        fontFamily: 'Poppins_500Medium',
+        fontSize: 16,
+        color: 'rgba(255, 255, 255, 1)'
+    },
+    formCadastroFruta:{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width:'100%',
+        marginTop: 30
+    },
+    itemCadastroFruta:{
+        display:'flex',
+        flexDirection: 'row',
+        backgroundColor: '#FFFF',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 2,
+          height: 2
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        width: '90%',
+        alignItems:'center',
+        justifyContent: 'left',
+        borderRadius: 8,
+        padding: 16,
+        margin: 10
+    },
+    itemCadastroFrutaText:{
+        color:'#6C7072',
+        fontSize: 16,
+        fontFamily: 'Poppins_400Regular'
+    },
+
+    //Editar fruta: mesmo estilização de cadastrar, adapitar somento o text
+    //cadastro sucesso =====================================
+    cadastroSucessoTela:{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    cadastroSucessoButtonX:{
+        position: 'absolute',
+        top:50,
+        right:30
+    },
+    cadastroSucessoTitle:{
+        fontSize: 20,
+        fontFamily: 'Poppins_600SemiBold',
+        marginBottom: 20,
+    },
+    cadastroSucessoTxt:{
+        fontFamily: 'Poppins_300Light',
+        fontSize: 15
+    },
+    cadastroSucessoConfirm:{
+        marginTop: 50,
+        margin: 10
     }
 });
 
