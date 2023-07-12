@@ -4,14 +4,12 @@ const styles = StyleSheet.create({
    
     homeTela: {
         flex: 1,
-        fontFamily: 'Poppins_300Light',
         backgroundColor: '#fff',
         alignItems: 'left',
         justifyContent: 'center',
         marginLeft: 20
     },
     homeText: {
-        fontFamily: 'Poppins_300Light',
         marginBottom: 30
     },
     homeButton:{
@@ -31,7 +29,7 @@ const styles = StyleSheet.create({
     frutasTela:{
         flex: 1,
         flexDirection: 'row',
-        fontFamily: 'Poppins_300Light',
+        //fontFamily: 'Poppins_300Light',
         backgroundColor: '#fff',
         alignItems: 'top',
         justifyContent: 'center',
@@ -62,19 +60,46 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     frutasTextoPesquisar:{
-        fontFamily: 'Poppins_300Light',
+        //fontFamily: 'Poppins_300Light',
         fontSize:15
     },
     frutaButtonAdd:{
         position: 'absolute',
         backgroundColor: 'rgba(218, 13, 30, 1)',
-        bottom: 50,
+        bottom: 100,
         right: 30,
         width: 60,
         height: 60, 
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 20
+    },
+    menuFrutasOpcoes:{
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
+        width: '100%',
+        height: 150, 
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        backgroundColor:'#FFFF',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 2,
+          height: 2
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 5,
+        paddingLeft:16,
+        paddingBottom: 40, 
+        paddingTop: 24
+    },
+    frutaopcao:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems: 'center',
+        justifyContent:'center',
+        fontSize: 50
     },
     //tela de cadastro de frutas ================================
     CadastrarFrutasTela:{
@@ -100,7 +125,7 @@ const styles = StyleSheet.create({
         color: 'rgba(218, 13, 30, 1)',
         fontSize: 24,
         textAlign: 'left',
-        fontFamily: 'Poppins_500Medium',
+        //fontFamily: 'Poppins_500Medium',
         marginLeft: 10
     },
     cadastrarFrutaButtonX:{
@@ -118,7 +143,7 @@ const styles = StyleSheet.create({
         borderRadius: 100
     },
     cadastrarFrutaButtonText:{
-        fontFamily: 'Poppins_500Medium',
+        //fontFamily: 'Poppins_500Medium',
         fontSize: 16,
         color: 'rgba(255, 255, 255, 1)'
     },
@@ -151,9 +176,9 @@ const styles = StyleSheet.create({
     itemCadastroFrutaText:{
         color:'#6C7072',
         fontSize: 16,
-        fontFamily: 'Poppins_400Regular'
+        //fontFamily: 'Poppins_400Regular'
     },
-
+    
     //Editar fruta: mesmo estilização de cadastrar, adapitar somento o text
     //cadastro sucesso =====================================
     cadastroSucessoTela:{

@@ -8,7 +8,7 @@ import { useFonts, Poppins_300Light, Poppins_600SemiBold} from '@expo-google-fon
 // style
 import { styles } from '../global/style';
 
-export default function CadastroSucesso() {
+export default function CadastroSucesso({navigation}) {
     const [fontsLoaded] = useFonts({
         Poppins_300Light,Poppins_600SemiBold
     });
