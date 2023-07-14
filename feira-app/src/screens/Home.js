@@ -21,7 +21,7 @@ export default function Home({navigation}) {
         <View style={styles.homeTela}>
             
             <Text style={[styles.homeText, {fontFamily: font}]}>Cadastre sua primeira fruta:</Text>
-            <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate('cadastrarFrutas')}>
+            <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate('frutas')}>
                 <Image 
                     source={require('../assets/images/icon_mais_branco.png')} 
                     style={{width:20, height:20, padding:0, marginRight:10}}

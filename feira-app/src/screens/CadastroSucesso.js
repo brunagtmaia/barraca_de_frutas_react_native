@@ -33,7 +33,7 @@ export default function CadastroSucesso({navigation}) {
                 <Text style={styles.cadastroSucessoTxt}>Você cadastrou a [nome da fruta] com sucesso.</Text>
             </View>
             
-            <TouchableOpacity style={styles.cadastrarFrutaButton}>
+            <TouchableOpacity style={styles.cadastrarFrutaButton} onPress={() => navigation.navigate('frutas')}>
                 <Text style={styles.cadastrarFrutaButtonText}>Voltar ao início</Text>
             </TouchableOpacity>
         </View>

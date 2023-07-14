@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, TouchableOpacity, Image, Text, SafeAreaView, TextInput } from 'react-native';
@@ -21,6 +22,32 @@ export default function CadastrarFrutas({navigation}) {
     const [nomeFruta, setNomeFruta] = React.useState('');
     const [precoKilo, setPrecoKilo] = React.useState('');
     const [quantidadeEstoque, setQuantidadeEstoque] = React.useState('');
+
+    //guardando na memória 
+    const cadastroFruta = async () => {
+        try {
+            // Verificar se a fruta já foi cadastrada
+            const frutaExistente = await AsyncStorage.getItem(`${nomeFruta}:precoKilo`);
+            if (frutaExistente !== null) {
+                console.log('A fruta já foi cadastrada.');
+                return;
+            }
+    
+            // Caso a fruta não exista, realizar o cadastro fruta-objeto
+            const fruta = {
+                nome: nomeFruta,
+                precoKilo: precoKilo,
+                quantidadeEstoque: quantidadeEstoque
+            };
+    
+            await AsyncStorage.setItem(`${nomeFruta}`, JSON.stringify(fruta));
+    
+            console.log('Fruta cadastrada com sucesso:', nomeFruta);
+            navigation.navigate('cadastroSucesso');
+        } catch (error) {
+            console.error('Erro ao salvar os dados:', error);
+        }
+    };
 
     return(
         <SafeAreaView style={styles.CadastrarFrutasTela}>
@@ -52,7 +79,7 @@ export default function CadastrarFrutas({navigation}) {
                         source={require('../assets/images/icon_cash_fruta.png')}
                         style={{padding:0, marginRight:16, width: 30, height: 30}}
                     />
-                    <TextInput style={[styles.itemCadastroFrutaText, {fontFamily: font}]} onChangeText={setPrecoKilo} placeholder="Preço do kilo" value={precoKilo}></TextInput>
+                    <TextInput style={[styles.itemCadastroFrutaText, {fontFamily: font}]} onChangeText={setPrecoKilo} placeholder="Preço do kilo" value={precoKilo} keyboardType="numeric"></TextInput>
                 </View>
 
                 <View style={styles.itemCadastroFruta}>
@@ -61,12 +88,12 @@ export default function CadastrarFrutas({navigation}) {
                         source={require('../assets/images/icon_quantidade_fruta.png')}
                         style={{padding:0, marginRight:16, width: 30, height: 30}}
                     />
-                    <TextInput style={[styles.itemCadastroFrutaText, {fontFamily: font}]} onChangeText={setQuantidadeEstoque} placeholder="Quantidade no estoque" value={quantidadeEstoque}></TextInput>
+                    <TextInput style={[styles.itemCadastroFrutaText, {fontFamily: font}]} onChangeText={setQuantidadeEstoque} placeholder="Quantidade no estoque" value={quantidadeEstoque} keyboardType="numeric"></TextInput>
                 </View>
             </View>
 
 
-            <TouchableOpacity style={styles.cadastrarFrutaButton} onPress={() => navigation.navigate('cadastroSucesso')}>
+            <TouchableOpacity style={styles.cadastrarFrutaButton} onPress={cadastroFruta}>
                 <Text style={styles.cadastrarFrutaButtonText}>Cadastra fruta</Text>
             </TouchableOpacity>
         </SafeAreaView>

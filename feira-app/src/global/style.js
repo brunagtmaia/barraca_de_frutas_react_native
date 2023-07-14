@@ -28,11 +28,10 @@ const styles = StyleSheet.create({
     //frutas =============================================
     frutasTela:{
         flex: 1,
-        flexDirection: 'row',
-        //fontFamily: 'Poppins_300Light',
+        flexDirection: 'column',
         backgroundColor: '#fff',
-        alignItems: 'top',
-        justifyContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
         backgroundColor: 'white'
     },
     pesquisarFrutas:{
@@ -100,6 +99,31 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent:'center',
         fontSize: 50
+    },
+    frutaItem:{
+        display:'flex',
+        flexDirection: 'row',
+        backgroundColor: '#FFFF',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 2,
+          height: 2
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        width: '90%',
+        height: 70,
+        alignItems:'center',
+        justifyContent: 'space-between',
+        borderRadius: 8,
+        marginTop: 20,
+        padding: 16
+    },
+    excluirFrutaTela:{
+        flex: 1,
+        backgroundColor: '#ff0000', 
+        alignItems:'center',
+        justifyContent: 'center'
     },
     //tela de cadastro de frutas ================================
     CadastrarFrutasTela:{
