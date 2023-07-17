@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Frutas from '../screens/Frutas';
 
 const styles = StyleSheet.create({
    
@@ -43,6 +44,9 @@ const styles = StyleSheet.create({
     fruta: {
         display:'flex',
         flexDirection: 'row',
+        position: 'absolute',
+        top:20,
+        zIndex: 9999,
         backgroundColor: '#FFFF',
         shadowColor: '#000',
         shadowOffset: {
@@ -72,6 +76,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 20
+    },
+    frutasLista:{
+        marginTop: 50,
+        paddingBottom:10,
+        paddingLeft:20,
+        paddingRight: 20,
     },
     menuFrutasOpcoes:{
         position: 'absolute',
@@ -111,7 +121,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.3,
         shadowRadius: 10,
-        width: '90%',
+        width: '100%',
         height: 70,
         alignItems:'center',
         justifyContent: 'space-between',
@@ -120,10 +130,50 @@ const styles = StyleSheet.create({
         padding: 16
     },
     excluirFrutaTela:{
-        flex: 1,
-        backgroundColor: '#ff0000', 
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 999,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    alert:{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent:'center',
+        alignItems: 'flex-start',
+        width: '90%',
+        height: 300,
+        backgroundColor: '#FFF',
+        borderRadius: 10, 
+        padding: 24
+
+    },
+    alertBotoes:{
+        display:'flex', 
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems:'center',
-        justifyContent: 'center'
+        width: '100%',
+        marginTop:20
+    },
+    alertButaoNao:{
+        width: 140,
+        height: 50,
+        borderRadius:100,
+        justifyContent:'center',
+        alignItems:'center', 
+        borderColor:'#DA0D1E',
+        borderWidth:2
+    },
+    alertButaoSim:{
+        width: 140,
+        height: 50,
+        borderRadius:100,
+        justifyContent:'center',
+        alignItems:'center',
+        backgroundColor:'#DA0D1E'
     },
     //tela de cadastro de frutas ================================
     CadastrarFrutasTela:{
