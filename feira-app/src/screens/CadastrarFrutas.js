@@ -26,29 +26,41 @@ export default function CadastrarFrutas({ navigation }) {
     //guardando na memória 
     const cadastroFruta = async () => {
         try {
+            // Verificar se algum campo está vazio
+            if (!nomeFruta || !precoKilo || !quantidadeEstoque) {
+                console.log('Por favor, preencha todos os campos antes de cadastrar a fruta.');
+                return;
+            }
+    
             // Verificar se a fruta já foi cadastrada
-            const frutaExistente = await AsyncStorage.getItem(`${nomeFruta}:precoKilo`);
+            const frutaExistente = await AsyncStorage.getItem(`${nomeFruta}`);
             if (frutaExistente !== null) {
                 console.log('A fruta já foi cadastrada.');
                 return;
             }
-
+    
             // Caso a fruta não exista, realizar o cadastro fruta-objeto
             const fruta = {
                 nome: nomeFruta,
                 precoKilo: precoKilo,
                 quantidadeEstoque: quantidadeEstoque
             };
-
+    
             await AsyncStorage.setItem(`${nomeFruta}`, JSON.stringify(fruta));
-
+    
             console.log('Fruta cadastrada com sucesso:', nomeFruta);
             navigation.navigate('cadastroSucesso');
+            limparCampos();
         } catch (error) {
             console.error('Erro ao salvar os dados:', error);
         }
     };
 
+    const limparCampos = () => {
+        setNomeFruta('');
+        setPrecoKilo('');
+        setQuantidadeEstoque('');
+    };
     const fecharTeclado = () => {
         Keyboard.dismiss();
     };
@@ -93,8 +105,6 @@ export default function CadastrarFrutas({ navigation }) {
                         <TextInput style={[styles.itemCadastroFrutaText, { fontFamily: font }]} onChangeText={setQuantidadeEstoque} placeholder="Quantidade no estoque" value={quantidadeEstoque} keyboardType="numeric"></TextInput>
                     </View>
                 </View>
-
-
                 <TouchableOpacity style={styles.cadastrarFrutaButton} onPress={cadastroFruta}>
                     <Text style={styles.cadastrarFrutaButtonText}>Cadastrar fruta</Text>
                 </TouchableOpacity>

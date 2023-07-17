@@ -2,19 +2,20 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Image, Text, View, SafeAreaView, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+// style
+import { styles } from '../global/style';
 //font
 import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 
-// style
-import { styles } from '../global/style';
-
 export default function Frutas({ navigation }) {
+  // Carrega as fontes necessárias
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
   });
 
   const font = fontsLoaded ? 'Poppins_400Regular' : null;
 
+  // Estados do componente
   const [opcoesVisiveis, setOpcoesVisiveis] = useState(false); // Estado para controlar a visibilidade das opções
   const [excluirFruta, setExcluirFruta] = useState(false); // Estado para controlar a exclusão da fruta
   const [text, onChangeText] = useState(''); // Estado para armazenar o texto do campo de pesquisa
@@ -22,24 +23,50 @@ export default function Frutas({ navigation }) {
   const [frutaSelecionada, setFrutaSelecionada] = useState(null); // Estado para armazenar a fruta selecionada
   const [searchResults, setSearchResults] = useState([]); // Estado para armazenar os resultados da pesquisa
 
+  // useEffect é usado para executar ações quando o componente é montado ou atualizado
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       carregarFrutas();
     });
 
+    // Retorna uma função de limpeza para executar ação quando o componente é desmontado
     return unsubscribe;
   }, [navigation]);
 
   useEffect(() => {
     carregarFrutas();
-  }, []);
+  }, [excluirFrutaSim]);
 
   function abrirOpcoes(nome) {
     setOpcoesVisiveis(!opcoesVisiveis); // Alterna a visibilidade das opções
+    if(frutaSelecionada !== null){
+      setFrutaSelecionada(null); //primeiro "zeramos" o valor 
+    }
     setFrutaSelecionada(nome); // Armazena a fruta selecionada
   }
 
   const excluir = () => {
+    setExcluirFruta(!excluirFruta); // Alterna a exclusão da fruta
+  };
+
+  const excluirFrutaNao = () => {
+    setOpcoesVisiveis(!opcoesVisiveis); // Alterna a visibilidade das opções
+    setExcluirFruta(!excluirFruta); // Alterna a exclusão da fruta
+  };
+
+  const excluirFrutaSim = async () => {
+    try {
+      await AsyncStorage.removeItem(frutaSelecionada); // Remove a fruta selecionada do AsyncStorage
+      console.log(`Fruta ${frutaSelecionada} removida com sucesso.`);
+      
+      setExcluirFruta(false); // Desativa a exclusão da fruta
+
+      
+    } catch (error) {
+      console.error(`Erro ao remover a fruta ${frutaSelecionada}:`, error);
+    }
+    carregarFrutas(); // Recarrega a lista de frutas após a exclusão
+    setOpcoesVisiveis(!opcoesVisiveis); // Alterna a visibilidade das opções
     setExcluirFruta(!excluirFruta); // Alterna a exclusão da fruta
   };
 
@@ -59,20 +86,10 @@ export default function Frutas({ navigation }) {
     }
   };
 
-  const excluirFrutaNao = () => {
+  const editarFruta = () =>{
     setOpcoesVisiveis(!opcoesVisiveis); // Alterna a visibilidade das opções
-    setExcluirFruta(!excluirFruta); // Alterna a exclusão da fruta
-  };
-
-  const excluirFrutaSim = async () => {
-    try {
-      await AsyncStorage.removeItem(frutaSelecionada); // Remove a fruta selecionada do AsyncStorage
-      console.log(`Fruta ${frutaSelecionada} removida com sucesso.`);
-      carregarFrutas(); // Recarrega a lista de frutas após a exclusão
-      setExcluirFruta(false); // Desativa a exclusão da fruta
-    } catch (error) {
-      console.error(`Erro ao remover a fruta ${frutaSelecionada}:`, error);
-    }
+    
+    navigation.navigate('editarFruta', {frutaSelecionada: frutaSelecionada});
   };
 
   const apagarTudo = async () => {
@@ -143,10 +160,11 @@ export default function Frutas({ navigation }) {
           style={{ padding: 0, marginRight: 10, marginLeft: 10, width: 25, height: 25 }}
         />
       </TouchableOpacity>
-
+      
+      {/* navigation.navigate('editarFruta', {frutaSelecionada: frutaSelecionada}) */}
       {opcoesVisiveis && (
         <View style={styles.menuFrutasOpcoes}>
-          <TouchableOpacity style={styles.frutaopcao} onPress={() => navigation.navigate('editarFruta')}>
+          <TouchableOpacity style={styles.frutaopcao} onPress={editarFruta}>
             <Image
               source={require('../assets/images/icon_editar_fruta.png')}
               style={{ padding: 0, marginRight: 10, marginLeft: 10, width: 30, height: 30 }}

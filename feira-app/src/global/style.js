@@ -252,7 +252,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         //fontFamily: 'Poppins_400Regular'
     },
-    
     //Editar fruta: mesmo estilização de cadastrar, adapitar somento o text
     //cadastro sucesso =====================================
     cadastroSucessoTela:{
