@@ -101,10 +101,14 @@ export default function Frutas({ navigation }) {
     }
   };
 
+  // Definição da função realizarPesquisa
   const realizarPesquisa = () => {
+    // Filtrar os resultados da pesquisa com base no texto inserido (frutas que contêm o texto no nome, ignorando maiúsculas e minúsculas)
     const filteredResults = frutas.filter((fruta) =>
-      fruta.nome.toLowerCase().includes(text.toLowerCase())
+        fruta.nome.toLowerCase().includes(text.toLowerCase())
     );
+
+    // Definir os resultados da pesquisa no estado 'searchResults'
     setSearchResults(filteredResults);
   };
 

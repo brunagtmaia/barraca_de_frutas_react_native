@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         display:'flex',
         flexDirection: 'row',
         position: 'absolute',
-        top:20,
+        top:30,
         zIndex: 9999,
         backgroundColor: '#FFFF',
         shadowColor: '#000',
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     frutasLista:{
-        marginTop: 50,
+        marginTop: 60,
         paddingBottom:10,
         paddingLeft:20,
         paddingRight: 20,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent: 'space-between',
         borderRadius: 8,
-        marginTop: 20,
+        marginTop: 15,
         padding: 16
     },
     excluirFrutaTela:{
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         justifyContent: 'center',
         alignItems: 'center',
-        zIndex: 999,
+        zIndex: 99999,
         justifyContent: 'center',
         alignItems: 'center'
     },

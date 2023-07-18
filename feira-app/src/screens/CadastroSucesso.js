@@ -18,7 +18,7 @@ export default function CadastroSucesso({navigation}) {
     }
     return(
         <View style={styles.cadastroSucessoTela}>
-            <TouchableOpacity style={styles.        cadastroSucessoButtonX}>
+            <TouchableOpacity style={styles.cadastroSucessoButtonX} onPress={() => navigation.navigate('frutas')}>
                     <Image
                         source={require('../assets/images/icon_x.png')}
                         style={{padding:0, marginRight:10, marginLeft:10, width:20, height:20}}
