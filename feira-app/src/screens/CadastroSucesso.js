@@ -30,7 +30,7 @@ export default function CadastroSucesso({navigation}) {
             />
             <View style={styles.cadastroSucessoConfirm}>
                 <Text style={styles.cadastroSucessoTitle}>Fruta cadastrada</Text>
-                <Text style={styles.cadastroSucessoTxt}>Você cadastrou a [nome da fruta] com sucesso.</Text>
+                <Text style={styles.cadastroSucessoTxt}>Você cadastrou a fruta com sucesso.</Text>
             </View>
             
             <TouchableOpacity style={styles.cadastrarFrutaButton} onPress={() => navigation.navigate('frutas')}>
