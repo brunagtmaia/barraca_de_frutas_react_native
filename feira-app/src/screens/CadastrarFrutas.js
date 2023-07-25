@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, TouchableOpacity, Image, Text, SafeAreaView, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { Shadow } from 'react-native-shadow-2';//biblioteca da sombra
 
 //font
 import { useFonts, Poppins_500Medium, Poppins_400Regular } from '@expo-google-fonts/poppins';
@@ -106,7 +107,7 @@ export default function CadastrarFrutas({ navigation }) {
                     </View>
                 </View>
                 <TouchableOpacity style={styles.cadastrarFrutaButton} onPress={cadastroFruta}>
-                    <Text style={styles.cadastrarFrutaButtonText}>Cadastrar fruta</Text>
+                    <Text style={[styles.cadastrarFrutaButtonText, { fontFamily: font }]}>Cadastrar fruta</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         </TouchableWithoutFeedback>

@@ -120,7 +120,7 @@ export default function EditarFruta({ navigation, route }) {
                 </View>
 
                 <TouchableOpacity style={styles.cadastrarFrutaButton} onPress={atualizarFruta}>
-                    <Text style={styles.cadastrarFrutaButtonText}>Atualizar fruta</Text>
+                    <Text style={[styles.cadastrarFrutaButtonText, { fontFamily: font }]}>Atualizar fruta</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         </TouchableWithoutFeedback>

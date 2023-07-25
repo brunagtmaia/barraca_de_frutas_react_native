@@ -1,12 +1,10 @@
 import { StyleSheet } from 'react-native';
-import Frutas from '../screens/Frutas';
 
 const styles = StyleSheet.create({
-   
     homeTela: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'left',
+        //alignItems: 'left',
         justifyContent: 'center',
         marginLeft: 20
     },
@@ -48,23 +46,30 @@ const styles = StyleSheet.create({
         top:30,
         zIndex: 9999,
         backgroundColor: '#FFFF',
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 2,
-          height: 2
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 10,
+        ...Platform.select({
+            ios: {
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 2,
+                height: 2,
+              },
+              shadowOpacity: 0.3,
+              shadowRadius: 10,
+            },
+            android: {
+              elevation: 10,
+            },
+        }),
         width: '90%',
         height: 56,
         alignItems:'center',
-        justifyContent: 'left',
         borderRadius: 8,
-        marginTop: 20
+        marginTop: 20,
+        marginBottom: 100
     },
     frutasTextoPesquisar:{
-        //fontFamily: 'Poppins_300Light',
-        fontSize:15
+        fontSize:15, 
+        width: '100%'
     },
     frutaButtonAdd:{
         position: 'absolute',
@@ -78,8 +83,12 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     frutasLista:{
-        marginTop: 60,
-        paddingBottom:10,
+        marginTop: Platform.select({
+            ios: 60,
+            android: 110, 
+            default: 100, 
+        }),
+        paddingBottom:20,
         paddingLeft:20,
         paddingRight: 20,
     },
@@ -91,14 +100,21 @@ const styles = StyleSheet.create({
         height: 150, 
         alignItems: 'flex-start',
         justifyContent: 'space-between',
-        backgroundColor:'#FFFF',
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 2,
-          height: 2
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 5,
+        backgroundColor: '#FFFF',
+        ...Platform.select({
+            ios: {
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 2,
+                height: 2,
+              },
+              shadowOpacity: 0.3,
+              shadowRadius: 10,
+            },
+            android: {
+              elevation: 10, 
+            },
+        }),
         paddingLeft:16,
         paddingBottom: 40, 
         paddingTop: 24
@@ -114,19 +130,32 @@ const styles = StyleSheet.create({
         display:'flex',
         flexDirection: 'row',
         backgroundColor: '#FFFF',
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 2,
-          height: 2
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 10,
-        width: '100%',
+        ...Platform.select({
+            ios: {
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 2,
+                height: 2,
+              },
+              shadowOpacity: 0.3,
+              shadowRadius: 10,
+            },
+            android: {
+              elevation: 5, 
+            },
+        }),
+        alignSelf:'center',
+        width: Platform.select({
+            ios: '100%',
+            android: '98%', 
+            default: 100, 
+        }),
         height: 70,
         alignItems:'center',
         justifyContent: 'space-between',
         borderRadius: 8,
-        marginTop: 15,
+        marginTop: 10,
+        marginBottom: 5,
         padding: 16
     },
     excluirFrutaTela:{
@@ -181,8 +210,9 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'top',
-        backgroundColor: 'white'
+        justifyContent: 'flex-start',
+        backgroundColor: 'white',
+        paddingTop: 10
     },
     cadastrarFrutaConteiner: {
         display: 'flex',
@@ -192,14 +222,13 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10,
         width: '100%',
-        marginTop: 20
+        marginTop: 30
     },
     CadastrarFrutasTitle: {
         flex: 1,
         color: 'rgba(218, 13, 30, 1)',
         fontSize: 24,
         textAlign: 'left',
-        //fontFamily: 'Poppins_500Medium',
         marginLeft: 10
     },
     cadastrarFrutaButtonX:{
@@ -217,7 +246,6 @@ const styles = StyleSheet.create({
         borderRadius: 100
     },
     cadastrarFrutaButtonText:{
-        //fontFamily: 'Poppins_500Medium',
         fontSize: 16,
         color: 'rgba(255, 255, 255, 1)'
     },
@@ -233,24 +261,32 @@ const styles = StyleSheet.create({
         display:'flex',
         flexDirection: 'row',
         backgroundColor: '#FFFF',
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 2,
-          height: 2
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 10,
+        ...Platform.select({
+            ios: {
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 2,
+                height: 2,
+              },
+              shadowOpacity: 0.3,
+              shadowRadius: 10,
+            },
+            android: {
+              elevation: 10, // Adicione a elevação para criar a sombra no Android
+            },
+        }),
         width: '90%',
         alignItems:'center',
-        justifyContent: 'left',
+        justifyContent: 'flex-start',
         borderRadius: 8,
         padding: 16,
         margin: 10
     },
+    
     itemCadastroFrutaText:{
         color:'#6C7072',
         fontSize: 16,
-        //fontFamily: 'Poppins_400Regular'
+        width: '100%'
     },
     //Editar fruta: mesmo estilização de cadastrar, adapitar somento o text
     //cadastro sucesso =====================================
@@ -266,11 +302,11 @@ const styles = StyleSheet.create({
     },
     cadastroSucessoTitle:{
         fontSize: 20,
-        fontFamily: 'Poppins_600SemiBold',
+        //fontFamily: 'Poppins_600SemiBold',
         marginBottom: 20,
     },
     cadastroSucessoTxt:{
-        fontFamily: 'Poppins_300Light',
+        //fontFamily: 'Poppins_300Light',
         fontSize: 15
     },
     cadastroSucessoConfirm:{
